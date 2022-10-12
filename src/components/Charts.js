@@ -36,13 +36,13 @@ const Charts = () => {
             <LineChart data={data.forecast} >
                 <CartesianGrid />
                 <XAxis dataKey="date" 
-                    interval={'preserveStartEnd'} />
+                    interval={'preserveStartEnd'}/>
                 <YAxis></YAxis>
                 <Legend />
                 <Tooltip />
-                <Line dataKey="avg_temp_C"
-                    stroke="black" activeDot={{ r: 8 }} />
                 <Line dataKey="avg_humidity"
+                    stroke="green" activeDot={{ r: 8 }} />
+                <Line dataKey="avg_temp_C"
                     stroke="red" activeDot={{ r: 8 }} />
                 <Line dataKey="total_precip_mm"
                     stroke="blue" activeDot={{ r: 8 }} />
