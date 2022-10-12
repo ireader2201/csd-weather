@@ -32,7 +32,7 @@ const Charts = () => {
     return (
         Object.keys(data).length > 0 && 
         <>
-        <ResponsiveContainer width="100%" aspect={3}>
+        <ResponsiveContainer width="75%" aspect={3}>
             <LineChart data={data.forecast} >
                 <CartesianGrid />
                 <XAxis dataKey="date" 

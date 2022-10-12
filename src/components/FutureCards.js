@@ -23,7 +23,10 @@ const FutureCards = () => {
     
     return (
         Object.keys(data).length > 0 && 
-            <div className='container'>
+            <div>
+                <h4 style={{textAlign: 'center'}}>Location: {data.current.location[0] + ", " + data.current.location[1]}</h4>
+                 <div className='container'>
+                &nbsp;
                 {
                 Object.values(data.forecast).map((weather)=>{
                 return (
@@ -44,6 +47,8 @@ const FutureCards = () => {
                 )
             })}
             </div>
+            </div>
+           
             
 
         // <div className='container'>
