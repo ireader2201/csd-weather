@@ -1,5 +1,7 @@
 import React from "react";
+import Charts from "./Charts";
 import CurrentCards from "./CurrentCards";
+import FutureCards from "./FutureCards";
 
 const Forecast = () => {
     return (
@@ -12,10 +14,16 @@ const Forecast = () => {
                 <h4>Future Weather Forecast</h4>
             </div>
            &nbsp;
+           <div style={Container}>
+                <Charts/>
+            </div>
             <h5 style={{textAlign:'center'}}>Current</h5>
             <div style={Container}>
-                
                 <CurrentCards/>
+            </div>
+            <h5 style={{textAlign:'center'}}>Future Forecast</h5>
+            <div style={Container}>
+                <FutureCards/>
             </div>
         </div>
         
