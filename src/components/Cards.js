@@ -25,11 +25,14 @@ const Cards = () => {
     return (
         Object.keys(data).length > 0 && 
         <Card style={{ width: '25rem', alignItems: 'center', justifyContent: 'center'}}>
-            <Card.Img variant="top" src={"https://"+data.current.condition.icon} style={{width:"50%", height: "50%"}}/>
+            <Card.Title style={{textAlign: 'center', marginTop: '10px'}}>{data.current.current_temp_C}<strong>&#8451;</strong></Card.Title>
+            <Card.Title>{data.current.condition.text}</Card.Title>
+            <Card.Img variant="top" src={"https://"+data.current.condition.icon} style={{width:"40%", height: "40%"}}/>
             <Card.Body >
-                <Card.Title style={{textAlign: 'center', fontSize: '30px'}}>{data.current.current_temp_C}<strong>&#8451;</strong></Card.Title>
-                <Card.Subtitle style={{textAlign: 'center', margin: '10px'}}>
-                    {data.current.location[0] + ', ' + data.current.location[1]}
+                {/* <Card.Title style={{textAlign: 'center'}}>{data.current.current_temp_C}<strong>&#8451;</strong> | {data.current.condition.text}</Card.Title> */}
+                <Card.Title style={{textAlign: 'center', marginBottom: '20px'}}> {data.current.location[0] + ', ' + data.current.location[1]}</Card.Title>
+                <Card.Subtitle>
+                    Current Time: {data.current.localtime}
                 </Card.Subtitle>
                 <Card.Text>
                 Some quick example text to build on the card title and make up the

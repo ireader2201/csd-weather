@@ -7,7 +7,7 @@ const Header = () => {
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                <Navbar.Brand href="/">Navbar</Navbar.Brand>
+                <Navbar.Brand href="/">CSD</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/Forecast">Forecast</Nav.Link>
