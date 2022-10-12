@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from 'react';
 
-const Cards = () => {
+const CurrentCards = () => {
 
     // const url = 'https://api.weatherapi.com/v1/forecast.json?key=df858f61cf6141ab89403119222909&q=London&days=5&aqi=no&alerts=no';
     const url = "https://hwxez3ozxi.execute-api.us-east-1.amazonaws.com/default";
@@ -52,12 +52,12 @@ const Cards = () => {
                 bulk of the card's content. 
                 </Card.Text> */}
             </Card.Body>
-            <Button variant="dark" style={{marginBottom: '10px'}} href='/Forecast'>Check Weather Forecast</Button>
+            {/* <Button variant="dark" style={{marginBottom: '10px'}}>Check Weather Forecast</Button> */}
         </Card>
     );
 }
 
-export default Cards;
+export default CurrentCards;
 
 const Spacing = {
     marginTop: '8px',

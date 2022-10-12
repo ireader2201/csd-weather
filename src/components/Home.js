@@ -9,7 +9,7 @@ const Home = () => {
             <div style={{
                 textAlign: 'center'
             }}>
-                <h4>Current</h4>
+                <h4>Current Weather Forecast</h4>
             </div>
            
             <div style={Container}>
