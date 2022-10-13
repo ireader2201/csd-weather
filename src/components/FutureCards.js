@@ -5,7 +5,8 @@ import Card from 'react-bootstrap/Card';
 const FutureCards = () => {
 
     // const url = 'https://api.weatherapi.com/v1/forecast.json?key=df858f61cf6141ab89403119222909&q=London&days=5&aqi=no&alerts=no';
-    const url = "https://hwxez3ozxi.execute-api.us-east-1.amazonaws.com/default";
+    // const url = "https://hwxez3ozxi.execute-api.us-east-1.amazonaws.com/default";
+    const url = 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=Parramatta';
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -14,8 +15,9 @@ const FutureCards = () => {
         axios.get(url)
             .then((response)=>{
                 setIsLoading(false);
-                setData(JSON.parse(response.data));
-                console.log(JSON.parse(response.data));
+                // setData(JSON.parse(response.data));
+                setData(response.data);
+                console.log((response.data));
             })
     }
 
