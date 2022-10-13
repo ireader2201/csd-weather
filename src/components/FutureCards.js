@@ -2,11 +2,18 @@ import axios, { AxiosHeaders } from 'axios';
 import { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 
-const FutureCards = () => {
+const FutureCards = (city) => {
 
     // const url = 'https://api.weatherapi.com/v1/forecast.json?key=df858f61cf6141ab89403119222909&q=London&days=5&aqi=no&alerts=no';
     // const url = "https://hwxez3ozxi.execute-api.us-east-1.amazonaws.com/default";
     const url = 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=Parramatta';
+    // const url = '';
+    // if(city === ''){
+    //      url = 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=Parramatta';
+    // } else{
+    //      url = 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=' + city;
+    // }
+    console.log(city.city)
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -18,12 +25,14 @@ const FutureCards = () => {
                 // setData(JSON.parse(response.data));
                 setData(response.data);
                 console.log((response.data));
+
             })
     }
 
     useEffect(()=>fetchData(), [])
     
     return (
+        
         Object.keys(data).length > 0 && 
             <div>
                 <h4 style={{textAlign: 'center'}}>Location: {data.current.location[0] + ", " + data.current.location[1]}</h4>

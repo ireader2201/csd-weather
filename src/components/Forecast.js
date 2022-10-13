@@ -1,9 +1,18 @@
-import React from "react";
 import Charts from "./Charts";
 import CurrentCards from "./CurrentCards";
 import FutureCards from "./FutureCards";
+import InputFields from "./InputFields";
+import React, {useState, useRef} from 'react';
 
 const Forecast = () => {
+    const [city,setCity] = useState('');
+    const handleChange = event => {
+        setCity(event.target.value);
+        console.log(event.target.value);
+    };
+
+
+
     return (
         <div style={{
             margin: '20px'
@@ -12,6 +21,8 @@ const Forecast = () => {
                 textAlign: 'center'
             }}>
                 <h4>Future Weather Forecast</h4>
+                <InputFields city={city}  onCityChange={handleChange}
+                />
             </div>
            &nbsp;
            <div style={Container}>
@@ -23,7 +34,7 @@ const Forecast = () => {
             </div>
             <h5 style={{textAlign:'center'}}>Future Forecast</h5>
             <div style={Container}>
-                <FutureCards/>
+                <FutureCards city={city}/>
             </div>
         </div>
         
