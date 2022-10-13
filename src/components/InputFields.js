@@ -2,8 +2,8 @@ import React, {useState, useRef} from "react";
 
 const InputFields = ({city, onCityClick, onCityChange}) => {
     const inputRef = useRef(null);
-    const handleClick = (e) => {
-        e.preventDefault();
+    const handleClick = () => {
+        city = (inputRef.current.value);
         console.log(inputRef.current.value);
     }
     return(
