@@ -7,7 +7,8 @@ import {
     Line,
     XAxis,
     YAxis,
-    CartesianGrid
+    CartesianGrid,
+    Label
 } from 'recharts';
 
 const Charts = () => {
@@ -32,14 +33,16 @@ const Charts = () => {
     
     return (
         Object.keys(data).length > 0 && 
+
         <>
         <ResponsiveContainer width="75%" aspect={3}>
             <LineChart data={data.forecast} >
                 <CartesianGrid />
                 <XAxis dataKey="date" 
-                    interval={'preserveStartEnd'}/>
+                    interval={'preserveStartEnd'}>
+                </XAxis>
                 <YAxis></YAxis>
-                <Legend />
+                <Legend/>
                 <Tooltip />
                 <Line dataKey="avg_humidity"
                     stroke="green" activeDot={{ r: 8 }} />
