@@ -28,22 +28,6 @@ const FutureCards = (getCity, setLoadingStatus) => {
         console.log(getCity.getCity);
     }
 
-    const handleClick2 = useCallback(event => {
-        setLoadingStatus(true);
-    },[setLoadingStatus])
-
-    // const fetchData = () => {
-    //     // axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-    //     axios.get(url)
-    //         .then((response)=>{
-    //             setIsLoading(false);
-    //             // setData(JSON.parse(response.data));
-    //             setData(response.data);
-    //             console.log((response.data));
-
-    //         })
-    // }
-
     const fetchData = () => {
         if(city===''){
             axios.get(url)
@@ -57,7 +41,7 @@ const FutureCards = (getCity, setLoadingStatus) => {
 
             })
         } else{
-            axios.get(url2(getCity.getCity))
+            axios.get(url2(city))
             .then((response)=>{
                 // setIsLoading(false);
                 setIsLoading(false);
@@ -90,7 +74,7 @@ const FutureCards = (getCity, setLoadingStatus) => {
                         // ref={inputRef}
                         >
                     </input>&nbsp; 
-                    <button onClick={handleClick}>Show Forecast</button>
+                    <button onClick={handleClick}>Show Future Forecast</button>
                 </div>
                 <br/>
                 <h4 style={{textAlign: 'center'}}>Location: {data.current.location[0] + ", " + data.current.location[1]}</h4>

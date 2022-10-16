@@ -40,7 +40,7 @@ const Forecast = () => {
             }}>
                 <h4>Future Forecast</h4>
                 {/* <InputFields city={city} isFetched={setFetch}  onCityChange={handleChange}  */}
-                <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
+                {/* <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
                     <span>Enter city name: </span>
                     <input
                         type='text'
@@ -52,7 +52,7 @@ const Forecast = () => {
                         >
                     </input>&nbsp; 
                     <button onClick={handleClick}>Show Forecast</button>
-                </div>
+                </div> */}
                 
             </div>
            &nbsp;

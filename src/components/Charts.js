@@ -18,6 +18,7 @@ const Charts = () => {
     const url = 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=Parramatta';
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [city, setCity] = useState('');
 
     const fetchData = () => {
         // axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
@@ -29,32 +30,64 @@ const Charts = () => {
             })
     }
 
+    const handleClick = event => {
+        event.preventDefault();
+        console.log(url2(city));
+        // console.log(setLoadingStatus);
+        setIsLoading(true);
+        console.log(city);
+    }
+
+    const handleChange = event => {
+        setCity(event.target.value);
+        console.log(event.target.value);
+    };
+
+    const url2 = (link) => {
+        return 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=' + link;
+    }
+   
+
     useEffect(()=>fetchData(), [])
     
     return (
         Object.keys(data).length > 0 && 
-
         <>
-        <ResponsiveContainer width="75%" aspect={3}>
-            <LineChart data={data.forecast} >
+        {/* <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
+                    <span>Enter city name: </span>
+                    <input
+                        type='text'
+                        id='cityname'
+                        name='cityname'
+                        onChange= {handleChange}
+                        value = {city}
+                        // ref={inputRef}
+                        >
+                    </input>&nbsp; 
+                    <button onClick={handleClick}>Show Forecast</button>
+            </div>
+            <br/> */}
+        <ResponsiveContainer width="100%" height='100%' aspect={3}>
+   
+            <LineChart data={data.forecast}  >
                 <CartesianGrid />
-                <XAxis dataKey="date" 
-                    interval={'preserveStartEnd'}>
+                <XAxis dataKey="date" angle='-25' 
+                    interval={'preserveStartEnd'} style={{fontSize: '12px'}}>
                 </XAxis>
                 <YAxis></YAxis>
-                <Legend/>
+                <Legend verticalAlign='top' />
                 <Tooltip />
                 <Line dataKey="avg_humidity"
                     stroke="green" activeDot={{ r: 8 }} />
                 <Line dataKey="avg_temp_C"
                     stroke="red" activeDot={{ r: 8 }} />
                 <Line dataKey="total_precip_mm"
-                    stroke="blue" activeDot={{ r: 8 }} />
-                
-                
+                    stroke="blue" activeDot={{ r: 8 }} />  
             </LineChart>
+
         </ResponsiveContainer>
         </>
+
 
         // <Card style={{ width: '25rem', alignItems: 'center', justifyContent: 'center'}}>
         //     <Card.Title style={{textAlign: 'center', marginTop: '10px'}}>{data.current.current_temp_C}<strong>&#8451;</strong></Card.Title>

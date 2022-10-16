@@ -70,7 +70,7 @@ const Cards = () => {
         return 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=' + link;
     }
     useEffect(()=>fetchData(), [isLoading])
-    
+
     return (
         Object.keys(data).length > 0 && 
         <div>
@@ -82,6 +82,7 @@ const Cards = () => {
                         name='cityname'
                         onChange= {handleChange}
                         value = {city}
+
                         // ref={inputRef}
                         >
                     </input>&nbsp; 
