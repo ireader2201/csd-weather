@@ -22,10 +22,10 @@ const FutureCards = (getCity, setLoadingStatus) => {
 
     const handleClick = event => {
         event.preventDefault();
-        console.log(url2(getCity.getCity));
+        console.log(url2(city));
         // console.log(setLoadingStatus);
         setIsLoading(true);
-        console.log(getCity.getCity);
+        console.log(city);
     }
 
     const fetchData = () => {

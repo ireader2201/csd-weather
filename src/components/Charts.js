@@ -1,5 +1,6 @@
 import axios, { AxiosHeaders } from 'axios';
 import { useEffect, useState } from 'react';
+import { Row } from 'react-bootstrap';
 import {
     LineChart,
     ResponsiveContainer,
@@ -21,21 +22,32 @@ const Charts = () => {
     const [city, setCity] = useState('');
 
     const fetchData = () => {
-        // axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-        axios.get(url)
+        if(city===''){
+            axios.get(url)
             .then((response)=>{
+                // setLoadingStatus(isLoading);
+                // setIsLoading(false);
                 setIsLoading(false);
-                setData((response.data));
+                // setData(JSON.parse(response.data));
+                setData(response.data);
                 console.log((response.data));
-            })
-    }
 
-    const handleClick = event => {
-        event.preventDefault();
-        console.log(url2(city));
-        // console.log(setLoadingStatus);
-        setIsLoading(true);
-        console.log(city);
+            })
+        } else{
+            axios.get(url2(city))
+            .then((response)=>{
+                // setIsLoading(false);
+                setIsLoading(false);
+                // setLoadingStatus(isLoading);
+
+
+
+                // setData(JSON.parse(response.data));
+                setData(response.data);
+                console.log((response.data));
+
+            })
+        }
     }
 
     const handleChange = event => {
@@ -43,16 +55,29 @@ const Charts = () => {
         console.log(event.target.value);
     };
 
+    const handleClick = event => {
+        event.preventDefault();
+        console.log(url2(city));
+        // console.log(setLoadingStatus);
+        setIsLoading(true);
+    }
+
     const url2 = (link) => {
         return 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=' + link;
     }
    
 
-    useEffect(()=>fetchData(), [])
+    useEffect(()=>fetchData(), [isLoading])
     
     return (
         Object.keys(data).length > 0 && 
+     
+    
+        
         <>
+            
+
+
         {/* <div style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
                     <span>Enter city name: </span>
                     <input
@@ -67,8 +92,8 @@ const Charts = () => {
                     <button onClick={handleClick}>Show Forecast</button>
             </div>
             <br/> */}
+        
         <ResponsiveContainer width="100%" height='100%' aspect={3}>
-   
             <LineChart data={data.forecast}  >
                 <CartesianGrid />
                 <XAxis dataKey="date" angle='-25' 
@@ -86,6 +111,23 @@ const Charts = () => {
             </LineChart>
 
         </ResponsiveContainer>
+        <div style={{width:'21%'}}>
+            <h5 style={{textAlign: 'center'}}>Location: {data.current.location[0] + ", " + data.current.location[1]}</h5>
+            <br/>
+            <div style={{justifyContent: 'center', alignItems: 'center', display:'flex'}}>
+                    <span>Enter city name: </span>
+                    <input
+                        type='text'
+                        id='cityname'
+                        name='cityname'
+                        onChange= {handleChange}
+                        value = {city}
+                        // ref={inputRef}
+                        >
+                    </input>&nbsp; 
+                    <button onClick={handleClick}>Show Forecast</button>
+                </div>
+            </div>
         </>
 
 
