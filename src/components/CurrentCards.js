@@ -5,41 +5,30 @@ import { useEffect, useState } from 'react';
 
 const CurrentCards = () => {
 
-  
     const url = 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=Parramatta';
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [city, setCity] = useState('');
 
-
     const fetchData = () => {
         if(city===''){
             axios.get(url)
             .then((response)=>{
-                // setLoadingStatus(isLoading);
-                // setIsLoading(false);
                 setIsLoading(false);
-                // setData(JSON.parse(response.data));
                 setData(response.data);
                 console.log((response.data));
-
             })
+
         } else{
             axios.get(url2(city))
             .then((response)=>{
-                // setIsLoading(false);
                 setIsLoading(false);
-                // setLoadingStatus(isLoading);
-
-
-
-                // setData(JSON.parse(response.data));
                 setData(response.data);
                 console.log((response.data));
-
             })
         }
     }
+
     const handleChange = event => {
         setCity(event.target.value);
         console.log(event.target.value);
@@ -48,7 +37,6 @@ const CurrentCards = () => {
     const handleClick = event => {
         event.preventDefault();
         console.log(url2(city));
-        // console.log(setLoadingStatus);
         setIsLoading(true);
         console.log(city);
     }
@@ -56,6 +44,7 @@ const CurrentCards = () => {
     const url2 = (link) => {
         return 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=' + link;
     }
+
     useEffect(()=>fetchData(), [isLoading])
     
     return (
@@ -69,7 +58,6 @@ const CurrentCards = () => {
                         name='cityname'
                         onChange= {handleChange}
                         value = {city}
-                        // ref={inputRef}
                         >
                     </input>&nbsp; 
                     <button onClick={handleClick}>Show Current Forecast</button>
@@ -80,7 +68,6 @@ const CurrentCards = () => {
             <Card.Title>{data.current.condition.text}</Card.Title>
             <Card.Img variant="top" src={"https://"+data.current.condition.icon} style={{width:"40%", height: "40%"}}/>
             <Card.Body >
-                {/* <Card.Title style={{textAlign: 'center'}}>{data.current.current_temp_C}<strong>&#8451;</strong> | {data.current.condition.text}</Card.Title> */}
                 <Card.Title style={{textAlign: 'center', marginBottom: '20px'}}> {data.current.location[0] + ', ' + data.current.location[1]}</Card.Title>
                 <Card.Subtitle style={Spacing}>
                     Current Time: {data.current.localtime}
@@ -97,13 +84,7 @@ const CurrentCards = () => {
                 <Card.Subtitle style={Spacing}>
                     Wind Speed: {data.current.wind_kph} km/h
                 </Card.Subtitle>
-                
-                {/* <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content. 
-                </Card.Text> */}
             </Card.Body>
-            {/* <Button variant="dark" style={{marginBottom: '10px'}}>Check Weather Forecast</Button> */}
         </Card>
         </div>
     );

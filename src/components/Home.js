@@ -11,14 +11,10 @@ const Home = () => {
             }}>
                 <h4>Current Weather Forecast</h4>
             </div>
-           
             <div style={Container}>
                 <Cards/>
             </div>
         </div>
-        
-
-
     )
 }
 

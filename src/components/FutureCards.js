@@ -10,7 +10,6 @@ const FutureCards = (getCity, setLoadingStatus) => {
     const [isLoading, setIsLoading] = useState(false);
     const [city, setCity] = useState('');
 
-    // setLoadingStatus = false;
     const url2 = (link) => {
         return 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=' + link;
     }
@@ -23,7 +22,6 @@ const FutureCards = (getCity, setLoadingStatus) => {
     const handleClick = event => {
         event.preventDefault();
         console.log(url2(city));
-        // console.log(setLoadingStatus);
         setIsLoading(true);
         console.log(city);
     }
@@ -32,10 +30,7 @@ const FutureCards = (getCity, setLoadingStatus) => {
         if(city===''){
             axios.get(url)
             .then((response)=>{
-                // setLoadingStatus(isLoading);
-                // setIsLoading(false);
                 setIsLoading(false);
-                // setData(JSON.parse(response.data));
                 setData(response.data);
                 console.log((response.data));
 
@@ -43,13 +38,7 @@ const FutureCards = (getCity, setLoadingStatus) => {
         } else{
             axios.get(url2(city))
             .then((response)=>{
-                // setIsLoading(false);
                 setIsLoading(false);
-                // setLoadingStatus(isLoading);
-
-
-
-                // setData(JSON.parse(response.data));
                 setData(response.data);
                 console.log((response.data));
 
@@ -57,7 +46,6 @@ const FutureCards = (getCity, setLoadingStatus) => {
         }
     }
 
-    // useEffect(()=> fetchData(), [])
     useEffect(()=> fetchData(),[isLoading])
 
     return (
@@ -71,7 +59,6 @@ const FutureCards = (getCity, setLoadingStatus) => {
                         name='cityname'
                         onChange= {handleChange}
                         value = {city}
-                        // ref={inputRef}
                         >
                     </input>&nbsp; 
                     <button onClick={handleClick}>Show Future Forecast</button>
@@ -94,9 +81,7 @@ const FutureCards = (getCity, setLoadingStatus) => {
                                 <div className="weatherDetail"><span>Total Percp.</span>{weather.total_precip_mm}mm</div>
                             </div>
                         </div>
-
                     </div>
-                    
                 )
             })}
             </div>
@@ -105,8 +90,3 @@ const FutureCards = (getCity, setLoadingStatus) => {
 }
 
 export default FutureCards;
-
-const Spacing = {
-    marginTop: '8px',
-    marginBottom: '8px'
-}

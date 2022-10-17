@@ -9,12 +9,6 @@ const InputFields = ({city, isFetched, onCityChange}) => {
         isFetched(true);
     },[isFetched])
 
-    
-    // () => {
-    //     city = (inputRef.current.value);
-    //     console.log(inputRef.current.value);
-    // }
-
     return(
         <div>
             <span>Enter city name: </span>

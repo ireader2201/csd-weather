@@ -5,32 +5,16 @@ import { useEffect, useState } from 'react';
 
 const Cards = () => {
 
-    // const url = 'https://api.weatherapi.com/v1/forecast.json?key=df858f61cf6141ab89403119222909&q=London&days=5&aqi=no&alerts=no';
-    // const url = "https://hwxez3ozxi.execute-api.us-east-1.amazonaws.com/default";
-    // const url = 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=Parramatta';
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [city, setCity] = useState('');
     const url = 'https://i2w7t3w0b6.execute-api.us-east-1.amazonaws.com/weather?city=Parramatta';
 
-
-    // const fetchData = () => {
-    //     // axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-    //     axios.get(url)
-    //         .then((response)=>{
-    //             setIsLoading(false);
-    //             setData((response.data));
-    //             console.log((response.data));
-    //         })
-    // }
     const fetchData = () => {
         if(city===''){
             axios.get(url)
             .then((response)=>{
-                // setLoadingStatus(isLoading);
-                // setIsLoading(false);
                 setIsLoading(false);
-                // setData(JSON.parse(response.data));
                 setData(response.data);
                 console.log((response.data));
 
@@ -38,20 +22,13 @@ const Cards = () => {
         } else{
             axios.get(url2(city))
             .then((response)=>{
-                // setIsLoading(false);
                 setIsLoading(false);
-                // setLoadingStatus(isLoading);
-
-
-
-                // setData(JSON.parse(response.data));
                 setData(response.data);
                 console.log((response.data));
 
             })
         }
     }
-
 
     const handleChange = event => {
         setCity(event.target.value);
@@ -61,7 +38,6 @@ const Cards = () => {
     const handleClick = event => {
         event.preventDefault();
         console.log(url2(city));
-        // console.log(setLoadingStatus);
         setIsLoading(true);
         console.log(city);
     }
@@ -82,8 +58,6 @@ const Cards = () => {
                         name='cityname'
                         onChange= {handleChange}
                         value = {city}
-
-                        // ref={inputRef}
                         >
                     </input>&nbsp; 
                     <button onClick={handleClick}>Show Forecast</button>
@@ -111,11 +85,6 @@ const Cards = () => {
                 <Card.Subtitle style={Spacing}>
                     Wind Speed: {data.current.wind_kph} km/h
                 </Card.Subtitle>
-                
-                {/* <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content. 
-                </Card.Text> */}
             </Card.Body>
             <Button variant="dark" style={{marginBottom: '10px'}} href='/Forecast'>Check Weather Forecast</Button>
         </Card>
